@@ -1,4 +1,4 @@
-package org.example.msvcusuarios.entity;
+package org.example.msvcusuarios.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -14,20 +14,21 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "El campo nombre no puede estar vacío")
     @Column(name = "nombre", nullable = false)
-    @NotEmpty(message = "El campo nombre no puede ser vacío")
     private String nombre;
 
-    @Column(unique = true)
-    @NotEmpty(message = "El campo email no puede ser vacío")
-    @Email
+    @NotEmpty(message = "El campo email no puede estar vacío")
+    @Email(message = "El email debe tener un formato válido")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @NotBlank //NotBlank es un poco mas completo que NotEmpty
+    @NotBlank(message = "El campo password no puede estar vacío")
+    @Column(nullable = false)
     private String password;
-
 }

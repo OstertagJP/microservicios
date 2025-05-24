@@ -1,6 +1,6 @@
-package org.example.msvcusuarios.controller;
+package org.example.msvcusuarios.controllers;
 
-import org.example.msvcusuarios.entity.Usuario;
+import org.example.msvcusuarios.entities.Usuario;
 import org.example.msvcusuarios.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,6 @@ public class UsuarioController {
         }
     }
 
-    // Otros endpoints opcionales
     @PostMapping
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
         Usuario nuevoUsuario = usuarioService.guardar(usuario);

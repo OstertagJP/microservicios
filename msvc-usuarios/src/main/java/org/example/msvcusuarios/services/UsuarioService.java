@@ -1,27 +1,18 @@
 package org.example.msvcusuarios.services;
 
-import org.example.msvcusuarios.entity.Usuario;
-import org.example.msvcusuarios.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.example.msvcusuarios.entities.Usuario;
 
+import java.util.List;
 import java.util.Optional;
 
-@Service
-public class UsuarioService {
+public interface UsuarioService {
+    List<Usuario> listar();
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    Optional<Usuario> obtenerPorId(Long id);
 
-    public Optional<Usuario> obtenerPorId(Long id) {
-        return usuarioRepository.findById(id);
-    }
+    Usuario guardar(Usuario usuario);
 
-    public Usuario guardar(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
+    Optional<Usuario> porEmail(String email);
 
-    public void eliminarPorId(Long id) {
-        usuarioRepository.deleteById(id);
-    }
+    void eliminarPorId(Long id);
 }
