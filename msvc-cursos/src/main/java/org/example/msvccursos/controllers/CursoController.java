@@ -2,13 +2,14 @@ package org.example.msvccursos.controllers;
 
 import feign.FeignException;
 import jakarta.validation.Valid;
-import micro.example.springcloud.msvc.cursos.msvccursos.entities.Curso;
-import micro.example.springcloud.msvc.cursos.msvccursos.models.Usuario;
-import micro.example.springcloud.msvc.cursos.msvccursos.services.CursoService;
+import org.example.msvccursos.entities.Curso;
+import org.example.msvccursos.models.Usuario;
+import org.example.msvccursos.services.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -26,11 +27,11 @@ public class CursoController {
 
     @GetMapping("/id/{id}")
     public ResponseEntity<?> porId(@PathVariable Long id){
-    Optional<Curso> cursoBuscado = cursoService.porId(id);
-    if(cursoBuscado.isPresent()){
-        return ResponseEntity.ok(cursoBuscado.get());
-    }
-    return ResponseEntity.notFound().build();
+        Optional<Curso> cursoBuscado = cursoService.porId(id);
+        if(cursoBuscado.isPresent()){
+            return ResponseEntity.ok(cursoBuscado.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping("/")
@@ -43,7 +44,7 @@ public class CursoController {
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<?>editar(@Valid @RequestBody Curso curso, BindingResult result, @PathVariable Long id){
+    public ResponseEntity<?> editar(@Valid @RequestBody Curso curso, BindingResult result, @PathVariable Long id){
         if(result.hasErrors()){
             return validar(result);
         }
@@ -62,7 +63,6 @@ public class CursoController {
         if(cursoBuscado.isPresent()){
             cursoService.eliminar(id);
             return ResponseEntity.noContent().build();
-
         }
         return ResponseEntity.notFound().build();
     }

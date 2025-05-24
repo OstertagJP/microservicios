@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
-import micro.example.springcloud.msvc.cursos.msvccursos.models.Usuario;
+import org.example.msvccursos.models.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +18,9 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column
     @NotEmpty
     private String nombre;
-
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "curso_id")
@@ -30,7 +28,6 @@ public class Curso {
 
     @Transient //nos dice que no persiste en la base de datos
     private List<Usuario> usuarios;
-
 
     public Curso(){
         this.cursoUsuarios = new ArrayList<>();
@@ -44,6 +41,4 @@ public class Curso {
     public void removeCursoUsuario(CursoUsuario cursoUsuario){
         cursoUsuarios.remove(cursoUsuario);
     }
-
-
 }

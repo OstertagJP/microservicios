@@ -1,7 +1,7 @@
 package org.example.msvccursos.services;
 
-import micro.example.springcloud.msvc.cursos.msvccursos.entities.Curso;
-import micro.example.springcloud.msvc.cursos.msvccursos.models.Usuario;
+import org.example.msvccursos.entities.Curso;
+import org.example.msvccursos.models.Usuario;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +11,7 @@ public interface CursoService {
      * métodos que persisten dentro de la base de datos msvc-cursos
      */
     List<Curso> listar();
-    Optional<Curso>porId(Long id);
+    Optional<Curso> porId(Long id);
     Curso guardar(Curso curso);
     void eliminar(Long id);
 

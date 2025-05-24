@@ -1,10 +1,10 @@
 package org.example.msvccursos.services;
 
-import micro.example.springcloud.msvc.cursos.msvccursos.clients.UsuarioClientRest;
-import micro.example.springcloud.msvc.cursos.msvccursos.entities.Curso;
-import micro.example.springcloud.msvc.cursos.msvccursos.entities.CursoUsuario;
-import micro.example.springcloud.msvc.cursos.msvccursos.models.Usuario;
-import micro.example.springcloud.msvc.cursos.msvccursos.repositories.CursoRepository;
+import org.example.msvccursos.clients.UsuarioClientRest;
+import org.example.msvccursos.entities.Curso;
+import org.example.msvccursos.entities.CursoUsuario;
+import org.example.msvccursos.models.Usuario;
+import org.example.msvccursos.repositories.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
